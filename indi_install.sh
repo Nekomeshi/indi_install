@@ -7,13 +7,13 @@ git clone https://github.com/indilib/indi.git
 cd indi
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 make -j4
 sudo make install
 
 #indi lib/driver
 cd
-sudo apt-get -y install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutls-dev libtiff-dev libfftw3-dev libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libavcodec-dev libavdevice-dev
+sudo apt-get -y install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutlcd ins-dev libtiff-dev libfftw3-dev libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev libavcodec-dev libavdevice-dev
 sudo apt-get install libnova-dev libcfitsio-dev libusb-1.0-0-dev zlib1g-dev libgsl-dev build-essential cmake git libjpeg-dev libcurl4-gnutls-dev libtiff-dev libftdi-dev libgps-dev libraw-dev libdc1394-22-dev libgphoto2-dev libboost-dev libboost-regex-dev librtlsdr-dev liblimesuite-dev libftdi1-dev
 git clone https://github.com/indilib/indi-3rdparty
 
@@ -21,7 +21,7 @@ git clone https://github.com/indilib/indi-3rdparty
 cd indi-3rdparty
 mkdir build_lib
 cd build_lib
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_LIBS=1 ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBS=1 ..
 make -j4
 sudo make install
 
@@ -29,7 +29,7 @@ sudo make install
 cd ..
 mkdir build_driver
 cd build_driver
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
 make -j4
 sudo make install
 cd
@@ -39,11 +39,12 @@ cd
 #sudo apt-get update
 #sudo apt-get install -y kstars-bleeding
 sudo apt-get -y install build-essential cmake git libeigen3-dev libcfitsio-dev zlib1g-dev libindi-dev extra-cmake-modules libkf5plotting-dev libqt5svg5-dev libkf5xmlgui-dev kio-dev kinit-dev libkf5newstuff-dev kdoctools-dev libkf5notifications-dev qtdeclarative5-dev libkf5crash-dev gettext libnova-dev libgsl-dev libraw-dev libkf5notifyconfig-dev wcslib-dev libqt5websockets5-dev xplanet xplanet-images qt5keychain-dev libsecret-1-dev breeze-icon-theme
+sudo apt-get install libqt5sql5-sqlite
 git clone https://invent.kde.org/education/kstars.git
 cd kstars
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_TESTING=OFF ..
 make -j4
 sudo make install
 
@@ -51,6 +52,7 @@ sudo make install
 sudo apt-get install -y python3-dev
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python3-setuptools
+sudo pip3 install wheel
 sudo -H pip3 install indiweb
 
 echo "[Desktop Entry]
@@ -103,4 +105,5 @@ cmake -D CMAKE_BUILD_TYPE=Release \
 make -j4
 
 sudo make install
+sudo ldconfig
 
